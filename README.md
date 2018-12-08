@@ -17,7 +17,7 @@ In order to carry out any of the above, access to the data type is made availabl
 In an attempt to produce refined datasets, there were certain attributes we did not include in the final processed datasets. These eliminated attributes and reasons due to which they were not considered is presented in a table towards the end of this section.
 
 
-##### *Data Dictionary - Restaurant Review Dataset*
+#### *Data Dictionary - Restaurant Review Dataset*
 
 *Name* | *Data Type* | *Description*
 ------- | -------- | ---------
@@ -37,7 +37,7 @@ display_phone | string | Array of strings that if organized vertically give an a
 display_phone | string | Phone number of the business formatted nicely to be displayed to users. The format is the standard phone number format for the business's country
 distance | decimal | Distance in meters from the search location. This returns meters regardless of the locale
 
-*Data Dictionary - Weather Information Dataset*
+#### *Data Dictionary - Weather Information Dataset*
 
 *Name* | *Data Type* | *Description*
 ------- | -------- | ---------
