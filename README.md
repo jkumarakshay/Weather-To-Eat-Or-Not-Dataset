@@ -17,7 +17,7 @@ In order to carry out any of the above, access to the data type is made availabl
 In an attempt to produce refined datasets, there were certain attributes we did not include in the final processed datasets. These eliminated attributes and reasons due to which they were not considered is presented in a table towards the end of this section.
 
 
-*Data Dictionary - Restaurant Review Dataset*
+#####*Data Dictionary - Restaurant Review Dataset*
 
 *Name* | *Data Type* | *Description*
 ------- | -------- | ---------
