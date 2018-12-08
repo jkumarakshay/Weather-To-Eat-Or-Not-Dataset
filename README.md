@@ -66,6 +66,9 @@ name | string | City name
 ------- | Restaurant Reviews | -------
 date_id | string | Unique ID to map the restaurant review and weather information dataset
 id | string | Unique Yelp ID of this business. Example: '4kMBvIEWPxWkWKFN__8SxQ'
+------- | Weather Information | -------
+id | int | City ID
+name | string | City name
 
 
 ## Working with the APIs - Stella
