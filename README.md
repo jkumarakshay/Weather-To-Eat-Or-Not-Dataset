@@ -10,6 +10,12 @@ Scope, motivation and purpose.
 
 Explanation of each attribute in Yelp and OpenWeatherMap and why certain attributes were eliminated in dataset.
 
+Data Dictionary - Yelp Restaurant Review Dataset
+
+NAME | DATA TYPE | DESCRIPTION
+------- | -------- | ---------
+date_id | string | Unique ID to map the restaurant review and weather information dataset
+
 
 ## Working with the APIs - Stella
 This program allows users to obtain restaurant review and weather information based on customized location and business type.
