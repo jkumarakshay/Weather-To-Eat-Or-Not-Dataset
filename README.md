@@ -29,8 +29,8 @@ url | string | URL for business page on Yelp
 review_count | int | Number of reviews for this business
 categories | string | Title of a category for display purpose. Example: Japanese, Italian, Juicebars vegan
 rating | decimal | Rating for this business (value ranges from 1, 1.5, ... 4.5, 5)
-latitude | decimal | Latitude coordinates of this business
-longitude | decimal | Longitude coordinates of this business
+latitude | decimal | City geo location - Latitude coordinates of this business
+longitude | decimal | City geo location - Longitude coordinates of this business
 transactions | string[] | List of Yelp transactions that the business is registered for. Current supported values are pickup, delivery and restaurant_reservation.
 price | string | Price level of the business. Value is one of $, $$, $$$ and $$$$.
 display_phone | string | Array of strings that if organized vertically give an address that is in the standard address format for the business's country
@@ -61,7 +61,7 @@ name | string | City name
 
 #### *Eliminated Attributes from each dataset*
 ##### Restaurant Reviews
-*Name* | *Data Type* | *Description*
+*Name* | *Data Type* | *Reason not considered*
 ------- | -------- | ---------
 business.alias | string | Every Yelp business has both a unique ID as well as a unique alias (eg: "name-of-business-separated-by-hyphen"). These can be used interchangeably. However, the business alias cotains unicode characters and hence we thought using the business id is ideal and also we have the business name captured in column 'name'
 business.image_url | string | Since our output presents the dataset in a csv format, decision to use just the URL of the business page on Yelp and not the the URL of the image was taken
@@ -69,8 +69,9 @@ business.location | object | The location object includes address1, address2, ad
 business.phone | string | This attribute displays the phone number of the business in a simple format like - +17864520068 whereas the attribute we have used is the display_phone which displays the same number in a better standard format - (786) 452-0068
 
 ##### Weather Information
-*Name* | *Data Type* | *Description*
+*Name* | *Data Type* | *Reason not considered*
 ------- | -------- | ---------
+coord.lon, coord.lat | decimal | Taken into consideration in Restaurant Reviews dataset
 
 
 
