@@ -10,9 +10,16 @@ Scope, motivation and purpose.
 
 Explanation of each attribute in Yelp and OpenWeatherMap and why certain attributes were eliminated in dataset.
 
-Data Dictionary - Restaurant Review Dataset
+Translating our business idea into code, we extracted and created two datasets – Restaurant Reviews and Weather Information using Yelp Fusion and OpenWeatherMap APIs respectively. As mentioned above, our dataset will, potentially, be used by various entities. The end goal can be to, either merge these two datasets to get further insights from correlating cuisines suitable for certain weather types or analyze whether weather impacts reviewer’s rating or any such analysis or to use each dataset on a stand-alone basis.
 
-Name | Data Type | Description
+In order to carry out any of the above, access to the data type is made available to the users through the following data dictionaries. This section describes each attribute in both, the Restaurant Reviews and Weather Information datasets.
+
+In an attempt to produce refined datasets, there were certain attributes we did not include in the final processed datasets. These eliminated attributes and reasons due to which they were not considered is presented in a table towards the end of this section.
+
+
+*Data Dictionary - Restaurant Review Dataset*
+
+*Name* | *Data Type* | *Description*
 ------- | -------- | ---------
 date_id | string | Unique ID to map the restaurant review and weather information dataset
 id | string | Unique Yelp ID of this business. Example: '4kMBvIEWPxWkWKFN__8SxQ'
@@ -30,9 +37,9 @@ display_phone | string | Array of strings that if organized vertically give an a
 display_phone | string | Phone number of the business formatted nicely to be displayed to users. The format is the standard phone number format for the business's country
 distance | decimal | Distance in meters from the search location. This returns meters regardless of the locale
 
-Data Dictionary - Weather Information Dataset
+*Data Dictionary - Weather Information Dataset*
 
-Name | Data Type | Description
+*Name* | *Data Type* | *Description*
 ------- | -------- | ---------
 date_id | string | Unique ID to map the restaurant review and weather information dataset
 weather_main | string | Group of weather parameters (Example: Clouds, Rain, Snow, Extreme etc.)
