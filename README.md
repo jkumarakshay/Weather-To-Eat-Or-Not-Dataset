@@ -23,6 +23,7 @@ In an attempt to produce refined datasets, there were certain attributes we did 
 ------- | -------- | ---------
 date_id | string | Unique ID to map the restaurant review and weather information dataset
 id | string | Unique Yelp ID of this business. Example: '4kMBvIEWPxWkWKFN__8SxQ'
+------ | -------- | -------
 name | string | Name of this business
 is_closed | bool | Whether business has been (permanently) closed
 url | string | URL for business page on Yelp
@@ -60,6 +61,7 @@ id | int | City ID
 name | string | City name
 
 #### *Eliminated Attributes*
+
 
 
 ## Working with the APIs - Stella
