@@ -59,6 +59,8 @@ sys_sunset | int | Date & time of sunrise in the unix timestamp format, UTC
 id | int | City ID
 name | string | City name
 
+#### *Eliminated Attributes*
+
 
 ## Working with the APIs - Stella
 This program allows users to obtain restaurant review and weather information based on customized location and business type.
