@@ -7,6 +7,7 @@ Scope, motivation and purpose.
 
 
 ## Data Dictionary - Devanshi
+
 Explanation of each attribute in Yelp and OpenWeatherMap and why certain attributes were eliminated in dataset.
 
 
