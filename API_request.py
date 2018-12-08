@@ -1,6 +1,6 @@
 ## Import dependencies
 ## Install as needed
-import requests, time, json, datetime
+import requests, time, json, datetime, re
 from urllib.parse import quote
 
 ## Tune parameters where needed
@@ -11,9 +11,10 @@ user_key = '5NczmeloT_5Qc8niaCRJfZRT5P83RIQces_05BZgQqzYZ8uO6LPDBNHtl59auUzg5ukv
 user_owmKey = "ffc55dc8f3dd47ff5e138b730603d46a"
 business_type = 'restaurant'
 sort_criteria = 'rating'
+    # Follow the format "City, State"
 user_location = 'Philadelphia, PA'
     # Specify user file path for saved files
-filepath = '/Users/ouliang/Google Drive/DRAGON/Data Preprocessing/Group Project/'
+filepath = '/Users/oustella/Google Drive/DRAGON/Data Preprocessing/Group Project/'
 
 #========================================================#
 ####### No user input is required from here and on########
@@ -87,7 +88,9 @@ def YelpJob():
 ##############################
 """
 
-endpoint=f"http://api.openweathermap.org/data/2.5/weather?q={user_location}&APPID={user_owmKey}""
+# Obtain the required location of US cities for OpenWeatherMap
+loc = re.split(',', user_location)[0]+",us"
+endpoint=f"http://api.openweathermap.org/data/2.5/weather?q={loc}&APPID={user_owmKey}"
 
 def weatherJob():
     """ Acquire today's weather """
