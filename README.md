@@ -63,7 +63,7 @@ name | string | City name
 
 *Name* | *Data Type* | *Description*
 ------- | -------- | ---------
-------- | Restaurant Reviews Dataset| -------
+------- | **Restaurant Reviews Dataset** -------
 business.alias | string | Every Yelp business has both a unique ID as well as a unique alias (eg: "name-of-business-separated-by-hyphen"). These can be used interchangeably. However, the business alias cotains unicode characters and hence we thought using the business id is ideal and also we have the business name captured in column 'name'
 business.image_url | string | Since our output presents the dataset in a csv format, decision to use just the URL of the business page on Yelp and not the the URL of the image was taken
 business.location | object | The location object includes address1, address2, address3, city, state, zip and country. The attribute display_address, instead merges all these elements as an array of strings which gives the address of the business in the standard address.
