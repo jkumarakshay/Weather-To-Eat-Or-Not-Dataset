@@ -15,6 +15,7 @@ Data Dictionary - Yelp Restaurant Review Dataset
 NAME | DATA TYPE | DESCRIPTION
 ------- | -------- | ---------
 date_id | string | Unique ID to map the restaurant review and weather information dataset
+id | string | Unique Yelp ID of this business. Example: '4kMBvIEWPxWkWKFN__8SxQ'
 
 
 ## Working with the APIs - Stella
