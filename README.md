@@ -64,7 +64,7 @@ name | string | City name
 *Name* | *Data Type* | *Reason not considered*
 ------- | -------- | ---------
 business.alias | string | Every Yelp business has both a unique ID as well as a unique alias (eg: "name-of-business-separated-by-hyphen"). These can be used interchangeably. However, the business alias cotains unicode characters and hence we thought using the business id is ideal and also we have the business name captured in column 'name'
-business.image_url | string | Since our output presents the dataset in a csv format, decision to use just the URL of the business page on Yelp and not the the URL of the image was taken
+business.image_url | string | Since our output presents the data in a csv format, decision to use just the URL of the business page on Yelp and not the the URL of the image was taken
 business.location | object | The location object includes address1, address2, address3, city, state, zip and country. The attribute display_address, instead merges all these elements as an array of strings which gives the address of the business in the standard address.
 business.phone | string | This attribute displays the phone number of the business in a simple format like - +17864520068 whereas the attribute we have used is the display_phone which displays the same number in a better standard format - (786) 452-0068
 
@@ -72,7 +72,11 @@ business.phone | string | This attribute displays the phone number of the busine
 *Name* | *Data Type* | *Reason not considered*
 ------- | -------- | ---------
 coord.lon, coord.lat | decimal | Taken into consideration in Restaurant Reviews dataset
-
+weather.id | int | Displays the weather condition ID. Since the weather parameters and condition attributes are considered, this column can be eliminated
+weather.icon | string | Since our output presents the data in a csv format, use of the description of weather parameter and not related icon seemed fit
+base.stations | string | This is an internal parameter for OpenWeatherMap to source weather data from meteorological broadcast services, raw data from airport weather stations, radar stations and other official weather stations
+sys.type, sys.id, sys.message | number | These are internal parameters of the Sys structure that contain general infromation about the request and the surrounding area for where the request was made
+cod | int | An internal parameter indicating the structure defined for JSON to be unmarshaled into
 
 
 ## Working with the APIs - Stella
