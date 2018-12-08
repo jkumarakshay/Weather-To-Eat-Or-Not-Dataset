@@ -39,7 +39,7 @@ weather_main | string | Group of weather parameters (Example: Clouds, Rain, Snow
 weather_description | string | Weather condition within the group mentioned above (Example: Broken clouds, Few clouds, Light rain etc.)
 main_temp | decimal | The temperature of that day. The default unit considered here is Kelvin
 main_pressure | decimal | Atmospheric pressure of that day in hPa (hectopascals)
-main_humidity | int | HUmidity of that day in %
+main_humidity | int | Relative air humidity of that day in %
 main_temp_min | decimal | Minimum temperature on that day. The default unit considered here is Kelvin
 main_temp_max | decimal | Maximum temperature on that day. The default unit considered here is Kelvin
 visibility | decimal | Visibility on that day in meters
