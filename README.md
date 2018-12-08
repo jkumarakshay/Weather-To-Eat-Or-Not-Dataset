@@ -10,9 +10,9 @@ Scope, motivation and purpose.
 
 Explanation of each attribute in Yelp and OpenWeatherMap and why certain attributes were eliminated in dataset.
 
-Data Dictionary - Yelp Restaurant Review Dataset
+Data Dictionary - Restaurant Review Dataset
 
-NAME | DATA TYPE | DESCRIPTION
+Name | Data Type | Description
 ------- | -------- | ---------
 date_id | string | Unique ID to map the restaurant review and weather information dataset
 id | string | Unique Yelp ID of this business. Example: '4kMBvIEWPxWkWKFN__8SxQ'
@@ -26,9 +26,25 @@ latitude | decimal | Latitude coordinates of this business
 longitude | decimal | Longitude coordinates of this business
 transactions | string[] | List of Yelp transactions that the business is registered for. Current supported values are pickup, delivery and restaurant_reservation.
 price | string | Price level of the business. Value is one of $, $$, $$$ and $$$$.
-display_phone | string | Array of strings that if organized vertically give an address that is in the standard address format for the business's country.
-display_phone | string | Phone number of the business formatted nicely to be displayed to users. The format is the standard phone number format for the business's country.
-distance | decimal | Distance in meters from the search location. This returns meters regardless of the locale.
+display_phone | string | Array of strings that if organized vertically give an address that is in the standard address format for the business's country
+display_phone | string | Phone number of the business formatted nicely to be displayed to users. The format is the standard phone number format for the business's country
+distance | decimal | Distance in meters from the search location. This returns meters regardless of the locale
+
+Data Dictionary - Weather Information Dataset
+
+Name | Data Type | Description
+------- | -------- | ---------
+date_id | string | Unique ID to map the restaurant review and weather information dataset
+weather_main | string | Group of weather parameters (Example: Clouds, Rain, Snow, Extreme etc.)
+weather_description | string | Weather condition within the group mentioned above (Example: Broken clouds, Few clouds, Light rain etc.)
+main_temp | decimal | The temperature of that day. The default unit considered here is Kelvin
+main_pressure | decimal | Atmospheric pressure of that day in hPa (hectopascals)
+main_humidity | int | HUmidity of that day in %
+main_temp_min | decimal | Minimum temperature on that day. The default unit considered here is Kelvin
+main_temp_max | decimal | Maximum temperature on that day. The default unit considered here is Kelvin
+visibility | decimal | Visibility on that day in meters
+wind_speed | decimal | Speed of the wind in mps (meters per second)
+wind_deg | decimal | Direction of the wind that day in degrees (meteorogical) (Example: 270 degrees means the wind is blowing from the west
 
 
 ## Working with the APIs - Stella
