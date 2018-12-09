@@ -12,7 +12,7 @@ Translating our business idea into code, we extracted and created two datasets â
 
 In order to carry out any of the above, access to the data type is made available to users through the following data dictionaries. This section describes each attribute in both, the Restaurant Reviews and Weather Information datasets.
 
-In an attempt to produce refined datasets, there were certain attributes we did not include in the final processed datasets. These eliminated attributes and reasons due to which they were not considered is presented in a table towards the end of this section.
+In an attempt to produce refined datasets, there were certain attributes we did not include in the final processed datasets. These eliminated attributes and reasons due to which they were not considered are presented towards the end of this section.
 
 
 #### *Data Dictionary - Restaurant Review Dataset*
