@@ -79,6 +79,7 @@ cod | int | An internal parameter indicating the structure defined for JSON to b
 
 
 **Our 'Search' Parameters**
+
 *Name* | *Data Type* | *Description*
 ------- | -------- | ---------
 term | string | Search term, for example "food" or "restaurants". The term may also be business names, such as "Starbucks". If term is not included the endpoint will default to searching across businesses from a small number of popular categories
