@@ -19,7 +19,7 @@ In an attempt to produce refined datasets, there were certain attributes we did 
 
 *Name* | *Data Type* | *Description*
 ------- | -------- | ---------
-date_id | string | Unique ID to map the restaurant review and weather information dataset
+date_id | string | Unique ID to map the restaurant reviews and weather information dataset
 id | string | Unique Yelp ID of this business. Example: '4kMBvIEWPxWkWKFN__8SxQ'
 name | string | Name of this business
 is_closed | bool | Whether business has been (permanently) closed
@@ -39,7 +39,7 @@ distance | decimal | Distance in meters from the search location. This returns m
 
 *Name* | *Data Type* | *Description*
 ------- | -------- | ---------
-date_id | string | Unique ID to map the restaurant review and weather information dataset
+date_id | string | Unique ID to map the restaurant reviews and weather information dataset
 weather_main | string | Group of weather parameters (Example: Clouds, Rain, Snow, Extreme etc.)
 weather_description | string | Weather condition within the group mentioned above (Example: Broken clouds, Few clouds, Light rain etc.)
 main_temp | decimal | The temperature of that day. The default unit considered here is Kelvin
