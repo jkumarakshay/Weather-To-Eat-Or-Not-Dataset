@@ -8,8 +8,6 @@ Scope, motivation and purpose.
 
 ## Data Dictionary - Devanshi
 
-Explanation of each attribute in Yelp and OpenWeatherMap and why certain attributes were eliminated in dataset.
-
 Translating our business idea into code, we extracted and created two datasets – Restaurant Reviews and Weather Information using Yelp Fusion and OpenWeatherMap APIs respectively. As mentioned above, our dataset will, potentially, be used by various entities. The end goal can be to, either merge these two datasets to get further insights from correlating cuisines suitable for certain weather types or analyze whether weather impacts reviewer’s rating or any such analysis or to use each dataset on a stand-alone basis.
 
 In order to carry out any of the above, access to the data type is made available to the users through the following data dictionaries. This section describes each attribute in both, the Restaurant Reviews and Weather Information datasets.
@@ -77,6 +75,21 @@ weather.icon | string | Since our output presents the data in a csv format, use 
 base.stations | string | This is an internal parameter for OpenWeatherMap to source weather data from meteorological broadcast services, raw data from airport weather stations, radar stations and other official weather stations
 sys.type, sys.id, sys.message | number | These are internal parameters of the Sys structure that contain general infromation about the request and the surrounding area for where the request was made
 cod | int | An internal parameter indicating the structure defined for JSON to be unmarshaled into
+
+
+
+**Our 'Search' Parameters**
+*Name* | *Data Type* | *Description*
+------- | -------- | ---------
+term | string | Search term, for example "food" or "restaurants". The term may also be business names, such as "Starbucks". If term is not included the endpoint will default to searching across businesses from a small number of popular categories
+location | string | Required if either latitude or longitude is not provided. This string indicates the geographic area to be used when searching for businesses. Examples: "New York City", "NYC", "350 5th Ave, New York, NY 10118". Businesses returned in the response may not be strictly within the specified location.
+limit | int | Number of business results to return. By default, it will return 20. Maximum is 50.
+sort by | string | Suggestion to the search algorithm that the results be sorted by one of the these modes: best_match, rating, review_count or distance. The default is best_match. Note that specifying the sort_by is a suggestion (not strictly enforced) to Yelp's search, which considers multiple input parameters to return the most relevant results. For example, the rating sort is not strictly sorted by the rating value, but by an adjusted rating value that takes into account the number of ratings, similar to a Bayesian average. This is to prevent skewing results to businesses with a single review.
+offset | int | Offset the list of returned business results by this amount.
+
+
+
+
 
 
 ## Working with the APIs - Stella
