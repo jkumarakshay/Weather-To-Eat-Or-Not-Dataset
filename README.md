@@ -49,7 +49,7 @@ main_temp_min | decimal | Minimum temperature on that day. The default unit cons
 main_temp_max | decimal | Maximum temperature on that day. The default unit considered here is Kelvin
 visibility | decimal | Visibility on that day in meters
 wind_speed | decimal | Speed of the wind in mps (meters per second)
-wind_deg | decimal | Direction of the wind that day in degrees (meteorogical) (Example: 270 degrees means the wind is blowing from the west
+wind_deg | decimal | Direction of the wind on that day in degrees (meteorogical). As an example, 270 degrees means the wind is blowing from the west
 clouds_all | int | The % of cloudiness/cloud cover for that day
 dt | int | Date & time of receiving data in the unix timestamp format, UTC (Example: Unix timestamp 1541696160 is equivalent to 11/08/2018 @ 4:56pm (UTC))
 sys_sunrise | int | Date & time of sunrise in the unix timestamp format, UTC
