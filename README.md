@@ -27,8 +27,8 @@ url | string | URL for business page on Yelp
 review_count | int | Number of reviews for this business
 categories | string | Title of a category for display purpose. Example: Japanese, Italian, Juicebars vegan
 rating | decimal | Rating for this business (value ranges from 1, 1.5, ... 4.5, 5)
-latitude | decimal | City geo location - Latitude coordinates of this business
-longitude | decimal | City geo location - Longitude coordinates of this business
+latitude | decimal | City geo location - latitude coordinates of this business
+longitude | decimal | City geo location - longitude coordinates of this business
 transactions | string[] | List of Yelp transactions that the business is registered for. Current supported values are pickup, delivery and restaurant_reservation.
 price | string | Price level of the business. Value is one of $, $$, $$$ and $$$$.
 display_phone | string | Array of strings that if organized vertically give an address that is in the standard address format for the business's country
