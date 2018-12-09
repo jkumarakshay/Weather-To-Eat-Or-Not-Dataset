@@ -108,7 +108,7 @@ Due to the aforementioned limits, our data scope is to query the top 1000 restau
 
 Another interesting quirk about the API is its sort_by function in that it is not strictly enforced by the sort criteria. Yelp will weigh multiple input parameters to return the most relevant results. Therefore, our calls to request the best rated restaurants are determined by Yelp.
 
-    *"For example, the rating sort is not strictly sorted by the rating value, but by an adjusted rating value that takes into account the number of ratings, similar to a Bayesian average. This is to prevent skewing results to businesses with a single review."*
+    *For example, the rating sort is not strictly sorted by the rating value, but by an adjusted rating value that takes into account the number of ratings, similar to a Bayesian average. This is to prevent skewing results to businesses with a single review.*
 
 We wanted to generate a "pulse" for each restaurant to measure a business's daily activities. Because Yelp does not provide historical view, we resolved to make queries on the number of comments for the same set of restaurants every day to generate our own trends, providing important intelligence on the business. This also enables us to associate the volume of comments with any other measures of interest for a particular day to understand the factors impact restaurant businesses. For example, we queried the weather of each day in an attempt to understand whether weather impacts people's dinning behaviors.
 
