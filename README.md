@@ -10,7 +10,7 @@ Scope, motivation and purpose.
 
 Translating our business idea into code, we extracted and created two datasets – Restaurant Reviews and Weather Information using Yelp Fusion and OpenWeatherMap APIs respectively. As mentioned above, our dataset will, potentially, be used by various entities. The end goal can be to, either merge these two datasets to get further insights from correlating cuisines suitable for certain weather types or analyze whether weather impacts reviewer’s rating or any such analysis or to use each dataset on a stand-alone basis.
 
-In order to carry out any of the above, access to the data type is made available to the users through the following data dictionaries. This section describes each attribute in both, the Restaurant Reviews and Weather Information datasets.
+In order to carry out any of the above, access to the data type is made available to users through the following data dictionaries. This section describes each attribute in both, the Restaurant Reviews and Weather Information datasets.
 
 In an attempt to produce refined datasets, there were certain attributes we did not include in the final processed datasets. These eliminated attributes and reasons due to which they were not considered is presented in a table towards the end of this section.
 
