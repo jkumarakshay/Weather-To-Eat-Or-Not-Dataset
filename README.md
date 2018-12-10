@@ -130,5 +130,12 @@ Talk about how OpenWeatherMap some times gives funny results and how you process
 - We found out that Yelp's limits were enforced in a funny way. On day 1, a total of 86 calls were accepted before the server gave an out of limit message. On day 3, only 20 calls were accepted. A closer look at the results from the 86 calls revealed that the server was looping through the same 1000 restaurants and giving out repeated returns.
 - Multiple returns from the same city name may create confusion. We made sure the querying result reflects the city of our choosing.
 ![many Philadelphias](https://raw.githubusercontent.com/AkshayJk1995/Weather-To-Eat-Or-Not-Dataset/master/owmcity.png)
+- We plan to integrate the [American Community Survey](https://www.census.gov/programs-surveys/acs/guidance/subjects.html) to the dataset by matching the neighborhood characteristics including the following. This would require us to first generate a geography ID based on the coordinates of restaurants using the census.gov [geocoder API](https://www.census.gov/geo/maps-data/data/geocoder.html), and then query the geography of interest using the [ACS APIs](https://www.census.gov/data/developers/data-sets/acs-1year.html). Of note, the Census Bureau has made a large amount of its data repository [machine-discoverable](https://www.census.gov/data/developers/updates/new-discovery-tool.html) for users needing to retrieve historical data.
+
+  - Social: ancestry, language spoken at home, marital status, migration/residence 1 year ago, school enrollment, etc.
+  - Housing: computer and internet use, kitchen facilities, occupants per room, owner/renter, vehicle available, etc.
+  - Economic: employment status, health insurance coverage, industry and occupation, etc.
+  - Demographic: age;sex, total population
+
 
 - Devanshi, you could talk about how the distance field doesn't seem to be reflective of actual querying location (PHL) and other cities.
