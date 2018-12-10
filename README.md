@@ -61,7 +61,7 @@ name | string | City name
 ##### Restaurant Reviews
 *Name* | *Data Type* | *Reason not considered*
 ------- | -------- | ---------
-business.alias | string | Every Yelp business has both a unique ID as well as a unique alias (eg: "name-of-business-separated-by-hyphen"). These can be used interchangeably. However, the business alias cotains unicode characters and hence we thought using the business id is ideal and also we have the business name captured in column 'name'
+business.alias | string | Every Yelp business has both a unique ID as well as a unique alias (eg: "name-of-business-separated-by-hyphen"). These can be used interchangeably. However, the business alias contains unicode characters and hence we thought using the business id is ideal and also we have the business name captured in column 'name'
 business.image_url | string | Since our output presents the data in a csv format, decision to use just the URL of the business page on Yelp and not the the URL of the image was taken
 business.location | object | The location object includes address1, address2, address3, city, state, zip and country. The attribute display_address, instead, merges all these elements as an array of strings which gives the address of the business in the standard address
 business.phone | string | This attribute displays the phone number of the business in a simple format like - +17864520068 whereas the attribute we have used is the display_phone which displays the same number in a better standard format - (786) 452-0068
@@ -73,7 +73,7 @@ coord.lon, coord.lat | decimal | Taken into consideration in Restaurant Reviews 
 weather.id | int | Displays the weather condition ID. Since the weather parameters and condition attributes are considered, this column was eliminated
 weather.icon | string | Since our output presents the data in a csv format, use of the description of weather parameter and not related icon seemed fit
 base.stations | string | This is an internal parameter for OpenWeatherMap to source weather data from meteorological broadcast services, raw data from airport weather stations, radar stations and other official weather stations
-sys.type, sys.id, sys.message | number | These are internal parameters of the Sys structure that contain general infromation about the request and the surrounding area for where the request was made
+sys.type, sys.id, sys.message | number | These are internal parameters of the Sys structure that contain general information about the request and the surrounding area for where the request was made
 cod | int | An internal parameter indicating the structure defined for JSON to be unmarshaled into
 
 
@@ -100,23 +100,30 @@ The Yelp Fusion APIs offer several endpoints including search, business details,
 
 In reviewing the API documentations, we summarized the following limits of the service.
   1. A client is limited to 5,000 APIs per 24 hours resetting every midnight UTC.
-  2. If queries against the API are deemed too frequent, the service will return a HTTP 429 error (too many requests). However, the documentation does not specify the maximum allowed frequency. We set our requests to be one second apart.
+  2. If queries-per-second (QPS) against the API are deemed too frequent, the service will return a HTTP 429 error (too many requests). However, the documentation does not specify the maximum allowed frequency. We set our requests to be one second apart.
+  ``` JSON
+  {
+    "error": {
+        "code": "TOO_MANY_REQUESTS_PER_SECOND",
+        "description": "You have exceeded the queries-per-second limit for this endpoint.
+                        Try reducing the rate at which you make queries."
+    }
+}
+ ```
   3. A client can get up to 1,000 businesses from the search endpoint.
   4. Each call can have a maximum of 50 return results. (paging)
 
-Due to the aforementioned limits, our data scope is to query the top 1000 restaurants for one city. We had to use the `offset` parameter, so that we obtain 1,000 in 20 calls. All results from the same day were stored in a list and JSON file. We also found out that Yelp's limits were enforced in a funny way. On day 1, a total of 86 calls were accepted before the server gave an out of limit message. On day 3, only 20 calls were accepted.
+Due to the aforementioned limits, our data scope is to query the top 1000 restaurants for one city. We had to use the `offset` parameter, so that we obtain 1,000 in 20 calls. Results from all 20 queries from the same day were stored in a list and output to one JSON file.
 
-Another interesting quirk about the API is its sort_by function in that it is not strictly enforced by the sort criteria. Yelp will weigh multiple input parameters to return the most relevant results. Therefore, our calls to request the best rated restaurants are determined by Yelp.
+The dataset generates a "pulse" for each restaurant by keeping track of the daily comment growth for each restaurant, despite Yelp does not provide the historical view of a business. This provides important intelligence on the business, and also enables users to associate the volume of comments with any number of measures of interest for a particular day to understand the factors impacting restaurant businesses. For example, the daily weather information is provided to address the question whether weather impacts people's dinning behaviors.
 
-    *For example, the rating sort is not strictly sorted by the rating value, but by an adjusted rating value that takes into account the number of ratings, similar to a Bayesian average. This is to prevent skewing results to businesses with a single review.*
-
-We wanted to generate a "pulse" for each restaurant to measure a business's daily activities. Because Yelp does not provide historical view, we resolved to make queries on the number of comments for the same set of restaurants every day to generate our own trends, providing important intelligence on the business. This also enables us to associate the volume of comments with any other measures of interest for a particular day to understand the factors impact restaurant businesses. For example, we queried the weather of each day in an attempt to understand whether weather impacts people's dinning behaviors.
-
-In storing the results of our queries, we made the decision to store our daily results in separate files so that historical files are preserved and the JSON format cannot be corrupted by errors.
+In storing the results of our queries, we made the decision to store our daily results in separate files so that historical files are preserved and the JSON format cannot be corrupted by errors. The process of aggregating the daily results is discussed below.
 
 ## Data aggregation/processing - Akshay
 Explanation of how JSON files were manipulated and CSV files are created.
 Talk about how OpenWeatherMap some times gives funny results and how you processed it.
 
 ## Challenges/Discussions/Future Work - All
-Everyone gives her/his two cents. This WILL take a while.
+- The dataset only contains the top-rated restaurants. It may take the inclusion of businesses with lower rating to design an algorithm that predicts business viability in a select locale.
+- We found out that Yelp's limits were enforced in a funny way. On day 1, a total of 86 calls were accepted before the server gave an out of limit message. On day 3, only 20 calls were accepted. A closer look at the results from the 86 calls revealed that the server was looping through the same 1000 restaurants and giving out repeated returns.
+- Devanshi, you could talk about how the distance field doesn't seem to be reflective of actual querying location (PHL) and other cities.
