@@ -2,8 +2,27 @@
 ### -- Uncover the nation’s appetite – a decision support dataset for would-be restauranteurs
 
 ## Introduction - Abeer
-Scope, motivation and purpose.
 
+Project Scope: 
+Our project consists of creating a national restaurant dataset using the Yelp Fusion API and other data sources. There are four cities of interest for comparison: Philadelphia, San Francisco, Chicago and Miami and extracted attributes associated with the restaurants (e.g. coordinates, phone number, operating hour, address, pricing level, rating, count of reviews). Also, we have decided to extract data from openweathermap.org such as humidity, Minimum temperature, Maximum temperature and wind speed.
+
+Motivation and Purpose:
+The dataset is ideal for answering questions such as:
+* Does weather impact reviewer’s rating?
+* Do restaurants benefit from certain characteristics of locations in terms of the reviews they receive? E.g. Chinese restaurant in Chinatown vs. a tourist site.
+* Comparison of competing restaurants in the same area? Eg:- Which cafe is better in the University City? Starbucks, Saxby’s or Wawa
+* What are the flavor preferences of residents of difference cities?
+
+The dataset is also good for developing products such as:
+* Geo-mapping/heatmaps of ‘cuisine districts’
+* A consulting algorithm that recommends the ideal location/price range/cuisine type given certain inputs from a business owner.
+
+Finally, we believe the dataset may be of interests to several stakeholders:
+- Business owners who are interested in entering the market.
+- Public health agencies who are interested in the population’s access and attitudes in dining out.
+- Public agencies interested in studying the local economy.
+- Food reviewers who are interested in assessing population’ interest.
+- Students/travellers who are looking for a type of restaurant in a new area (via the products of this dataset, e.g. heatmaps)
 
 
 ## Data Dictionary - Devanshi
