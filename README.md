@@ -117,7 +117,7 @@ Due to the aforementioned limits, our data scope is to query the top 1000 restau
 
 ![offset demo](https://raw.githubusercontent.com/AkshayJk1995/Weather-To-Eat-Or-Not-Dataset/master/offset.png)
 
-The dataset generates a "pulse" for each restaurant by keeping track of the daily comment growth for each restaurant, despite Yelp does not provide the historical view of a business. This provides important intelligence on the business, and also enables users to associate the volume of comments with any number of measures of interest for a particular day to understand the factors impacting restaurant businesses. For example, the daily weather information is provided to address the question whether weather impacts people's dinning behaviors.
+The dataset generates a "pulse" for each restaurant by keeping track of the daily comment growth for each restaurant, despite Yelp does not provide the historical view of a business. This provides important intelligence on the business, and also enables users to associate the volume of comments with any number of measures of interest for a particular day to understand the factors impacting restaurant businesses. For example, the daily weather information is provided to address the question whether weather impacts people's dinning behaviors. Please refer to the automation manual for how to set up the daily queries.
 
 In storing the results of our queries, we made the decision to store our daily results in separate files so that historical files are preserved and the JSON format cannot be corrupted by errors. The process of aggregating the daily results is discussed below.
 
