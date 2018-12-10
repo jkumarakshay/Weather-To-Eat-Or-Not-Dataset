@@ -128,4 +128,7 @@ Talk about how OpenWeatherMap some times gives funny results and how you process
 ## Challenges/Discussions/Future Work - All
 - The dataset only contains the top-rated restaurants. It may take the inclusion of businesses with lower rating to design an algorithm that predicts business viability in a select locale.
 - We found out that Yelp's limits were enforced in a funny way. On day 1, a total of 86 calls were accepted before the server gave an out of limit message. On day 3, only 20 calls were accepted. A closer look at the results from the 86 calls revealed that the server was looping through the same 1000 restaurants and giving out repeated returns.
+- Multiple returns from the same city name may create confusion. We made sure the querying result reflects the city of our choosing.
+![many Philadelphias](https://raw.githubusercontent.com/AkshayJk1995/Weather-To-Eat-Or-Not-Dataset/master/owmcity.png)
+
 - Devanshi, you could talk about how the distance field doesn't seem to be reflective of actual querying location (PHL) and other cities.
