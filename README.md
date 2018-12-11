@@ -18,7 +18,7 @@ The dataset is also good for developing products such as:
 * A consulting algorithm that recommends the ideal location/price range/cuisine type given certain inputs from a business owner.
 
 Finally, we believe the dataset may be of interests to several stakeholders:
-- Business owners who are interested in entering the market.
+- Business owners who are interested in entering the market. (Market Analysis )
 - Public health agencies who are interested in the population’s access and attitudes in dining out.
 - Public agencies interested in studying the local economy.
 - Food reviewers who are interested in assessing population’ interest.
