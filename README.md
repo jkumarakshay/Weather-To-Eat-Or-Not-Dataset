@@ -1,31 +1,31 @@
 # Weather-To-Eat-Or-Not-Dataset
 ### -- Uncover the nation’s appetite – a decision support dataset for would-be restauranteurs
 
-## Introduction - Abeer
+## Introduction 
 
-Project Scope: 
-Our project consists of creating a national restaurant dataset using the Yelp Fusion API and other data sources. There are four cities of interest for comparison: Philadelphia, San Francisco, Chicago and Miami and extracted attributes associated with the restaurants (e.g. coordinates, phone number, operating hour, address, pricing level, rating, count of reviews). Also, we have decided to extract data from openweathermap.org such as humidity, Minimum temperature, Maximum temperature and wind speed.
+### Project Scope: 
+Our project consists of creating a national restaurant dataset using the Yelp Fusion API and other data sources. There are four cities of interest for comparison: Philadelphia, San Francisco, Chicago and Miami. We extracted attributes associated with the restaurants such as coordinates, phone number, operating hour, address, pricing level, rating and count of reviews. Also, we have decided to extract data from openweathermap.org such as humidity, Minimum temperature, Maximum temperature and wind speed for the four cities.
 
-Motivation and Purpose:
+### Motivation and Purpose:
 The dataset is ideal for answering questions such as:
 * Does weather impact reviewer’s rating?
 * Do restaurants benefit from certain characteristics of locations in terms of the reviews they receive? E.g. Chinese restaurant in Chinatown vs. a tourist site.
 * Comparison of competing restaurants in the same area? Eg:- Which cafe is better in the University City? Starbucks, Saxby’s or Wawa
-* What are the flavor preferences of residents of difference cities?
-
+* What are the flavor preferences of residents of different cities?
 The dataset is also good for developing products such as:
 * Geo-mapping/heatmaps of ‘cuisine districts’
+
 * A consulting algorithm that recommends the ideal location/price range/cuisine type given certain inputs from a business owner.
 
 Finally, we believe the dataset may be of interests to several stakeholders:
-- Business owners who are interested in entering the market.
+- Business owners who are interested in entering the market. (Market Analysis )
 - Public health agencies who are interested in the population’s access and attitudes in dining out.
 - Public agencies interested in studying the local economy.
 - Food reviewers who are interested in assessing population’ interest.
-- Students/travellers who are looking for a type of restaurant in a new area (via the products of this dataset, e.g. heatmaps)
+- Students/travelers who are looking for a type of restaurant in a new area (via the products of this dataset, e.g. heatmaps)
 
 
-## Data Dictionary - Devanshi
+## Data Dictionary
 
 Translating our business idea into code, we extracted and created two datasets – Restaurant Reviews and Weather Information using Yelp Fusion and OpenWeatherMap APIs respectively. As mentioned above, our dataset will, potentially, be used by various entities. The end goal can be to, either merge these two datasets to get further insights from correlating cuisines suitable for certain weather types or analyze whether weather impacts reviewer’s rating or any such analysis or to use each dataset on a stand-alone basis.
 
@@ -34,7 +34,7 @@ In order to carry out any of the above, access to the data type is made availabl
 In an attempt to produce refined datasets, there were certain attributes we did not include in the final processed datasets. These eliminated attributes and reasons due to which they were not considered are presented towards the end of this section.
 
 
-#### *Data Dictionary - Restaurant Review Dataset*
+#### *Restaurant Review Dataset*
 
 *Name* | *Data Type* | *Description*
 ------- | -------- | ---------
@@ -54,7 +54,7 @@ display_address | string | Array of strings that if organized vertically give an
 display_phone | string | Phone number of the business formatted nicely to be displayed to users. The format is the standard phone number format for the business's country
 distance | decimal | Distance in meters from the search location. This returns meters regardless of the locale
 
-#### *Data Dictionary - Weather Information Dataset*
+#### *Weather Information Dataset*
 
 *Name* | *Data Type* | *Description*
 ------- | -------- | ---------
@@ -75,6 +75,7 @@ sys_sunrise | int | Date & time of sunrise in the unix timestamp format, UTC
 sys_sunset | int | Date & time of sunrise in the unix timestamp format, UTC
 id | int | City ID
 name | string | City name
+coord.lon, coord.lat | decimal | Longitude and latitude values for the given city
 
 #### *Eliminated Attributes from each dataset*
 ##### Restaurant Reviews
@@ -88,7 +89,6 @@ business.phone | string | This attribute displays the phone number of the busine
 ##### Weather Information
 *Name* | *Data Type* | *Reason not considered*
 ------- | -------- | ---------
-coord.lon, coord.lat | decimal | Taken into consideration in Restaurant Reviews dataset
 weather.id | int | Displays the weather condition ID. Since the weather parameters and condition attributes are considered, this column was eliminated
 weather.icon | string | Since our output presents the data in a csv format, use of the description of weather parameter and not related icon seemed fit
 base.stations | string | This is an internal parameter for OpenWeatherMap to source weather data from meteorological broadcast services, raw data from airport weather stations, radar stations and other official weather stations
@@ -112,7 +112,7 @@ offset | int | Offset the list of returned business results by this amount.
 
 
 
-## Working with the APIs - Stella
+## Working with the APIs
 This program allows users to obtain restaurant review and weather information based on customized location and business type.
 
 The Yelp Fusion APIs offer several endpoints including search, business details, etc. Each endpoint returns a specific facet about the businesses in Yelp's database. Its construct is similar to many database APIs in that one first needs to identify a unique ID of the desired entity by certain parameters in order to obtain more attributes of it, hence the separate end points search and business details.
@@ -140,11 +140,11 @@ The dataset generates a "pulse" for each restaurant by keeping track of the dail
 
 In storing the results of our queries, we made the decision to store our daily results in separate files so that historical files are preserved and the JSON format cannot be corrupted by errors. The process of aggregating the daily results is discussed below.
 
-## Data aggregation/processing - Akshay
+## Data aggregation/processing
 
 The two programs work on digging into the JSON files returned by the Yelp Fusion API and OpenWeatherMap API, choosing required fields and combine data for each city and across cities in CSV format.
 
-The JSON file returned from OpenWeatherMap API is extracted as a dictionary of dictionaries. Each file consists of each day's statistics in each city. On investigation, it turns out that OpenWeatherMap API sometimes concatenates the same data twice and stores it in one file. This causes the system to fail while creating the dataset. This requires manual intervention as it is difficult to correct the syntax of a JSON file using Python. The time complexity of extracting weather data is O(n<sup>4</sup?). The extracted fields are:
+The JSON file returned from OpenWeatherMap API is extracted as a dictionary of dictionaries. Each file consists of each day's statistics in each city. On investigation, it turns out that OpenWeatherMap API sometimes concatenates the same data twice and stores it in one file. This causes the system to fail while creating the dataset. This requires manual intervention as it is difficult to correct the syntax of a JSON file using Python. The time complexity of extracting weather data is O(n<sup>4</sup>). The extracted fields are:
   1. dt
   2. visibility
   3. id
@@ -177,7 +177,7 @@ In the program, datacombination.py, data from all the 4 cities were combined. Du
 
 The processing will work even if the dataset is expanded to contain all cities in the United States, if not the world, as all that needs to be clear is the naming scheme of the files, which is taken care of by this system. The consistency in data returned by the two APIs adds to our confidence in stating so.
 
-## Challenges/Discussions/Future Work - All
+## Challenges/Discussions/Future Work
 - The dataset only contains the top-rated restaurants. It may take the inclusion of businesses with lower rating to design an algorithm that predicts business viability in a select locale.
 - We found out that Yelp's limits were enforced in a funny way. On day 1, a total of 86 calls were accepted before the server gave an out of limit message. On day 3, only 20 calls were accepted. A closer look at the results from the 86 calls revealed that the server was looping through the same 1000 restaurants and giving out repeated returns.
 - Multiple returns from the same city name may create confusion. We made sure the querying result reflects the city of our choosing.
