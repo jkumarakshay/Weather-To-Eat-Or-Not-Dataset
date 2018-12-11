@@ -11,7 +11,7 @@ The dataset is ideal for answering questions such as:
 * Does weather impact reviewer’s rating?
 * Do restaurants benefit from certain characteristics of locations in terms of the reviews they receive? E.g. Chinese restaurant in Chinatown vs. a tourist site.
 * Comparison of competing restaurants in the same area? Eg:- Which cafe is better in the University City? Starbucks, Saxby’s or Wawa
-* What are the flavor preferences of residents of difference cities?
+* What are the flavor preferences of residents of different cities?
 
 The dataset is also good for developing products such as:
 * Geo-mapping/heatmaps of ‘cuisine districts’
