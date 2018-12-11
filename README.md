@@ -1,9 +1,9 @@
 # Weather-To-Eat-Or-Not-Dataset
 ### -- Uncover the nation’s appetite – a decision support dataset for would-be restauranteurs
 
-## Introduction 
+## Introduction
 
-### Project Scope: 
+### Project Scope:
 Our project consists of creating a national restaurant dataset using the Yelp Fusion API and other data sources. There are four cities of interest for comparison: Philadelphia, San Francisco, Chicago and Miami. We extracted attributes associated with the restaurants such as coordinates, phone number, operating hour, address, pricing level, rating and count of reviews. Also, we have decided to extract data from openweathermap.org such as humidity, Minimum temperature, Maximum temperature and wind speed for the four cities.
 
 ### Motivation and Purpose:
@@ -92,25 +92,52 @@ id | int | City ID
 name | string | City name
 coord.lon, coord.lat | decimal | Longitude and latitude values for the given city
 
-The JSON file returned from Yelp Fusion API is extracted as a list of dictionaries. Extracting restaurant data is a more convoluted process since the nesting go as deep as 4-5 levels. This shows the level of detail returned each day. Unlike weather data, the data returned has always been clean. Due to the level of nesting, the complexity of extracting data is O(n<sup>5</sup>). 
+```JSON
+{
+  "coord": {
+    "lon": -75.16,
+    "lat": 39.95
+  },
+  "weather": [
+    {
+      "id": 803,
+      "main": "Clouds",
+      "description": "broken clouds",
+      "icon": "04n"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 273.23,
+    "pressure": 1019,
+    "humidity": 83,
+    "temp_min": 271.15,
+    "temp_max": 274.85
+  },
+  "visibility": 16093,
+  "wind": {
+    "speed": 1.15,
+    "deg": 274.504
+  },
+  "clouds": {
+    "all": 75
+  },
+  "dt": 1543552500,
+  "sys": {
+    "type": 1,
+    "id": 4743,
+    "message": 0.0041,
+    "country": "US",
+    "sunrise": 1543579340,
+    "sunset": 1543613777
+  },
+  "id": 4560349,
+  "name": "Philadelphia",
+  "cod": 200
+}
+```
 
-The simple fields extracted are:
-  1. id
-  2. name
-  3. is_closed
-  4. url
-  5. review_count
-  6. rating
-  7. transactions
-  8. price
-  9. display_phone
-  10. distance
-
-The compound fields extracted are:
-  1. categories - alias
-  2. coordinates - latitude and longitude
-  3. location - display_address
-
+The JSON file returned from Yelp Fusion API is extracted as a list of dictionaries. Extracting restaurant data is a more convoluted process since the nesting go as deep as 4-5 levels. This shows the level of detail returned each day. Unlike weather data, the data returned has always been clean. Due to the level of nesting, the complexity of extracting data is O(n<sup>5</sup>). The extracted fields are:
 #### *Restaurant Review Dataset*
 
 *Name* | *Data Type* | *Description*
@@ -130,6 +157,62 @@ price | string | Price level of the business. Value is one of $, $$, $$$ and $$$
 display_address | string | Array of strings that if organized vertically give an address that is in the standard address format for the business's country
 display_phone | string | Phone number of the business formatted nicely to be displayed to users. The format is the standard phone number format for the business's country
 distance | decimal | Distance in meters from the search location. This returns meters regardless of the locale
+
+```JSON
+[
+  {
+    "businesses": [
+      {
+        "id": "kT8IlV47kz1rz2lTuNyO1w",
+        "alias": "christies-deli-philadelphia",
+        "name": "Christie's Deli",
+        "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/h7eEiQigXwXVq6MYdhG8vg/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/christies-deli-philadelphia?adjust_creative=czYYjyLsMG5Xo5jy1DcI4A&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=czYYjyLsMG5Xo5jy1DcI4A",
+        "review_count": 79,
+        "categories": [
+          {
+            "alias": "delis",
+            "title": "Delis"
+          },
+          {
+            "alias": "breakfast_brunch",
+            "title": "Breakfast & Brunch"
+          },
+          {
+            "alias": "sandwiches",
+            "title": "Sandwiches"
+          }
+        ],
+        "rating": 5,
+        "coordinates": {
+          "latitude": 39.9630809276773,
+          "longitude": -75.1693602651358
+        },
+        "transactions": [],
+        "price": "$",
+        "location": {
+          "address1": "1822 Spring Garden St",
+          "address2": "Unit B",
+          "address3": "",
+          "city": "Philadelphia",
+          "zip_code": "19130",
+          "country": "US",
+          "state": "PA",
+          "display_address": [
+            "1822 Spring Garden St",
+            "Unit B",
+            "Philadelphia, PA 19130"
+          ]
+        },
+        "phone": "+12155630555",
+        "display_phone": "(215) 563-0555",
+        "distance": 1045.8502098235545
+      }
+    ] }
+    ]
+
+```
 
 In the program, datacombination.py, data from all the 4 cities were combined. During combination, an extra field was created using Pandas DataFrame to mention clearly the city in which the given restaurant is located.
 
@@ -164,3 +247,9 @@ The processing will work even if the dataset is expanded to contain all cities i
   - Housing: computer and internet use, kitchen facilities, occupants per room, owner/renter, vehicle available, etc.
   - Economic: employment status, health insurance coverage, industry and occupation, etc.
   - Demographic: age;sex, total population
+=======
+
+
+- The distance field doesn't seem to be reflective of actual querying location (PHL) and other cities.
+
+- Timing of the API calls may yield better results in warmer seasons.
