@@ -141,8 +141,41 @@ The dataset generates a "pulse" for each restaurant by keeping track of the dail
 In storing the results of our queries, we made the decision to store our daily results in separate files so that historical files are preserved and the JSON format cannot be corrupted by errors. The process of aggregating the daily results is discussed below.
 
 ## Data aggregation/processing - Akshay
-Explanation of how JSON files were manipulated and CSV files are created.
-Talk about how OpenWeatherMap some times gives funny results and how you processed it.
+
+The two programs work on digging into the JSON files returned by the Yelp Fusion API and OpenWeatherMap API, choosing required fields and combine data for each city and across cities in CSV format.
+
+The JSON file returned from OpenWeatherMap API is extracted as a dictionary of dictionaries. Each file consists of each day's statistics in each city. On investigation, it turns out that OpenWeatherMap API sometimes concatenates the same data twice and stores it in one file. This causes the system to fail while creating the dataset. This requires manual intervention as it is difficult to correct the syntax of a JSON file using Python. The time complexity of extracting weather data is O(n<sup>4</sup?). The extracted fields are:
+  1. dt
+  2. visibility
+  3. id
+  4. name
+  5. coords - lat and lon
+  6. wind - speed and deg
+  7. sys - sunrise and sunset
+  8. clouds
+  9. weather - main and description
+  10. main - humidity, pressure, temp, temp_max, temp_min
+
+The JSON file returned from Yelp Fusion API is extracted as a list of dictionaries. Extracting restaurant data is a more convoluted process since the nesting go as deep as 4-5 levels. This shows the level of detail returned each day. Unlike weather data, the data returned has always been clean. Due to the level of nesting, the complexity of extracting data is O(n<sup>5</sup>). The simple fields extracted are:
+  1. id
+  2. name
+  3. is_closed
+  4. url
+  5. review_count
+  6. rating
+  7. transactions
+  8. price
+  9. display_phone
+  10. distance
+
+The compound fields extracted are:
+  1. categories - alias
+  2. coordinates - latitude and longitude
+  3. location - display_address
+
+In the program, datacombination.py, data from all the 4 cities were combined. During combination, an extra field was created using Pandas DataFrame to mention clearly the city in which the given restaurant is located.
+
+The processing will work even if the dataset is expanded to contain all cities in the United States, if not the world, as all that needs to be clear is the naming scheme of the files, which is taken care of by this system. The consistency in data returned by the two APIs adds to our confidence in stating so.
 
 ## Challenges/Discussions/Future Work - All
 - The dataset only contains the top-rated restaurants. It may take the inclusion of businesses with lower rating to design an algorithm that predicts business viability in a select locale.
