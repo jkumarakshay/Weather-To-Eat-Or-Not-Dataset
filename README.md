@@ -1,9 +1,9 @@
 # Weather-To-Eat-Or-Not-Dataset
 ### -- Uncover the nation’s appetite – a decision support dataset for would-be restauranteurs
 
-## Introduction 
+## Introduction
 
-### Project Scope: 
+### Project Scope:
 Our project consists of creating a national restaurant dataset using the Yelp Fusion API and other data sources. There are four cities of interest for comparison: Philadelphia, San Francisco, Chicago and Miami. We extracted attributes associated with the restaurants such as coordinates, phone number, operating hour, address, pricing level, rating and count of reviews. Also, we have decided to extract data from openweathermap.org such as humidity, Minimum temperature, Maximum temperature and wind speed for the four cities.
 
 ### Motivation and Purpose:
@@ -157,7 +157,50 @@ The JSON file returned from OpenWeatherMap API is extracted as a dictionary of d
   8. clouds
   9. weather - main and description
   10. main - humidity, pressure, temp, temp_max, temp_min
-
+```JSON
+{
+  "coord": {
+    "lon": -75.16,
+    "lat": 39.95
+  },
+  "weather": [
+    {
+      "id": 803,
+      "main": "Clouds",
+      "description": "broken clouds",
+      "icon": "04n"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 273.23,
+    "pressure": 1019,
+    "humidity": 83,
+    "temp_min": 271.15,
+    "temp_max": 274.85
+  },
+  "visibility": 16093,
+  "wind": {
+    "speed": 1.15,
+    "deg": 274.504
+  },
+  "clouds": {
+    "all": 75
+  },
+  "dt": 1543552500,
+  "sys": {
+    "type": 1,
+    "id": 4743,
+    "message": 0.0041,
+    "country": "US",
+    "sunrise": 1543579340,
+    "sunset": 1543613777
+  },
+  "id": 4560349,
+  "name": "Philadelphia",
+  "cod": 200
+}
+```
 The JSON file returned from Yelp Fusion API is extracted as a list of dictionaries. Extracting restaurant data is a more convoluted process since the nesting go as deep as 4-5 levels. This shows the level of detail returned each day. Unlike weather data, the data returned has always been clean. Due to the level of nesting, the complexity of extracting data is O(n<sup>5</sup>). The simple fields extracted are:
   1. id
   2. name
@@ -169,6 +212,62 @@ The JSON file returned from Yelp Fusion API is extracted as a list of dictionari
   8. price
   9. display_phone
   10. distance
+
+```JSON
+[
+  {
+    "businesses": [
+      {
+        "id": "kT8IlV47kz1rz2lTuNyO1w",
+        "alias": "christies-deli-philadelphia",
+        "name": "Christie's Deli",
+        "image_url": "https://s3-media3.fl.yelpcdn.com/bphoto/h7eEiQigXwXVq6MYdhG8vg/o.jpg",
+        "is_closed": false,
+        "url": "https://www.yelp.com/biz/christies-deli-philadelphia?adjust_creative=czYYjyLsMG5Xo5jy1DcI4A&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=czYYjyLsMG5Xo5jy1DcI4A",
+        "review_count": 79,
+        "categories": [
+          {
+            "alias": "delis",
+            "title": "Delis"
+          },
+          {
+            "alias": "breakfast_brunch",
+            "title": "Breakfast & Brunch"
+          },
+          {
+            "alias": "sandwiches",
+            "title": "Sandwiches"
+          }
+        ],
+        "rating": 5,
+        "coordinates": {
+          "latitude": 39.9630809276773,
+          "longitude": -75.1693602651358
+        },
+        "transactions": [],
+        "price": "$",
+        "location": {
+          "address1": "1822 Spring Garden St",
+          "address2": "Unit B",
+          "address3": "",
+          "city": "Philadelphia",
+          "zip_code": "19130",
+          "country": "US",
+          "state": "PA",
+          "display_address": [
+            "1822 Spring Garden St",
+            "Unit B",
+            "Philadelphia, PA 19130"
+          ]
+        },
+        "phone": "+12155630555",
+        "display_phone": "(215) 563-0555",
+        "distance": 1045.8502098235545
+      }
+    ] }
+    ]
+
+```
 
 The compound fields extracted are:
   1. categories - alias
@@ -192,4 +291,6 @@ The processing will work even if the dataset is expanded to contain all cities i
   - Demographic: age;sex, total population
 
 
-- Devanshi, you could talk about how the distance field doesn't seem to be reflective of actual querying location (PHL) and other cities.
+- The distance field doesn't seem to be reflective of actual querying location (PHL) and other cities.
+
+- Timing of the API calls may yield better results in warmer seasons.
