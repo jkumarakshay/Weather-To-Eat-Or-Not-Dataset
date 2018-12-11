@@ -25,77 +25,10 @@ Finally, we believe the dataset may be of interests to several stakeholders:
 - Students/travelers who are looking for a type of restaurant in a new area (via the products of this dataset, e.g. heatmaps)
 
 
-## Data Dictionary
+## Working with the APIs
+This program allows users to obtain restaurant review and weather information based on customized location and business type.
 
-Translating our business idea into code, we extracted and created two datasets – Restaurant Reviews and Weather Information using Yelp Fusion and OpenWeatherMap APIs respectively. As mentioned above, our dataset will, potentially, be used by various entities. The end goal can be to, either merge these two datasets to get further insights from correlating cuisines suitable for certain weather types or analyze whether weather impacts reviewer’s rating or any such analysis or to use each dataset on a stand-alone basis.
-
-In order to carry out any of the above, access to the data type is made available to users through the following data dictionaries. This section describes each attribute in both, the Restaurant Reviews and Weather Information datasets.
-
-In an attempt to produce refined datasets, there were certain attributes we did not include in the final processed datasets. These eliminated attributes and reasons due to which they were not considered are presented towards the end of this section.
-
-
-#### *Restaurant Review Dataset*
-
-*Name* | *Data Type* | *Description*
-------- | -------- | ---------
-date_id | string | Unique ID to map the restaurant reviews and weather information dataset
-id | string | Unique Yelp ID of this business. Example: '4kMBvIEWPxWkWKFN__8SxQ'
-name | string | Name of this business
-is_closed | bool | Whether business has been (permanently) closed
-url | string | URL for business page on Yelp
-review_count | int | Number of reviews for this business
-categories | string | Title of a category for display purpose. Example: Japanese, Italian, Juicebars vegan
-rating | decimal | Rating for this business (value ranges from 1, 1.5, ... 4.5, 5)
-latitude | decimal | City geo location - latitude coordinates of this business
-longitude | decimal | City geo location - longitude coordinates of this business
-transactions | string[] | List of transactions that the business is registered for. Current supported values are pickup, delivery and restaurant_reservation
-price | string | Price level of the business. Value is one of $, $$, $$$ and $$$$.
-display_address | string | Array of strings that if organized vertically give an address that is in the standard address format for the business's country
-display_phone | string | Phone number of the business formatted nicely to be displayed to users. The format is the standard phone number format for the business's country
-distance | decimal | Distance in meters from the search location. This returns meters regardless of the locale
-
-#### *Weather Information Dataset*
-
-*Name* | *Data Type* | *Description*
-------- | -------- | ---------
-date_id | string | Unique ID to map the restaurant reviews and weather information dataset
-weather_main | string | Group of weather parameters (Example: Clouds, Rain, Snow, Extreme etc.)
-weather_description | string | Weather condition within the group mentioned above (Example: Broken clouds, Few clouds, Light rain etc.)
-main_temp | decimal | The temperature of that day. The default unit considered here is Kelvin
-main_pressure | decimal | Atmospheric pressure of that day in hPa (hectopascals)
-main_humidity | int | Relative air humidity of that day in %
-main_temp_min | decimal | Minimum temperature on that day. The default unit considered here is Kelvin
-main_temp_max | decimal | Maximum temperature on that day. The default unit considered here is Kelvin
-visibility | decimal | Visibility on that day in meters
-wind_speed | decimal | Speed of the wind in mps (meters per second)
-wind_deg | decimal | Direction of the wind on that day in degrees (meteorogical). As an example, 270 degrees means the wind is blowing from the west
-clouds_all | int | The % of cloudiness/cloud cover for that day
-dt | int | Date & time of receiving data in the unix timestamp format, UTC (Example: Unix timestamp 1541696160 is equivalent to 11/08/2018 @ 4:56pm (UTC))
-sys_sunrise | int | Date & time of sunrise in the unix timestamp format, UTC
-sys_sunset | int | Date & time of sunrise in the unix timestamp format, UTC
-id | int | City ID
-name | string | City name
-coord.lon, coord.lat | decimal | Longitude and latitude values for the given city
-
-#### *Eliminated Attributes from each dataset*
-##### Restaurant Reviews
-*Name* | *Data Type* | *Reason not considered*
-------- | -------- | ---------
-business.alias | string | Every Yelp business has both a unique ID as well as a unique alias (eg: "name-of-business-separated-by-hyphen"). These can be used interchangeably. However, the business alias contains unicode characters and hence we thought using the business id is ideal and also we have the business name captured in column 'name'
-business.image_url | string | Since our output presents the data in a csv format, decision to use just the URL of the business page on Yelp and not the the URL of the image was taken
-business.location | object | The location object includes address1, address2, address3, city, state, zip and country. The attribute display_address, instead, merges all these elements as an array of strings which gives the address of the business in the standard address
-business.phone | string | This attribute displays the phone number of the business in a simple format like - +17864520068 whereas the attribute we have used is the display_phone which displays the same number in a better standard format - (786) 452-0068
-
-##### Weather Information
-*Name* | *Data Type* | *Reason not considered*
-------- | -------- | ---------
-weather.id | int | Displays the weather condition ID. Since the weather parameters and condition attributes are considered, this column was eliminated
-weather.icon | string | Since our output presents the data in a csv format, use of the description of weather parameter and not related icon seemed fit
-base.stations | string | This is an internal parameter for OpenWeatherMap to source weather data from meteorological broadcast services, raw data from airport weather stations, radar stations and other official weather stations
-sys.type, sys.id, sys.message | number | These are internal parameters of the Sys structure that contain general information about the request and the surrounding area for where the request was made
-cod | int | An internal parameter indicating the structure defined for JSON to be unmarshaled into
-
-
+The Yelp Fusion APIs offer several endpoints including search, business details, etc. Each endpoint returns a specific facet about the businesses in Yelp's database. Its construct is similar to many database APIs in that one first needs to identify a unique ID of the desired entity by certain parameters in order to obtain more attributes of it, hence the separate end points search and business details.
 
 **Our 'Search' Parameters**
 
@@ -106,16 +39,6 @@ location | string | Required if either latitude or longitude is not provided. Th
 limit | int | Number of business results to return. By default, it will return 20. Maximum is 50.
 sort by | string | Suggestion to the search algorithm that the results be sorted by one of the these modes: best_match, rating, review_count or distance. The default is best_match. Note that specifying the sort_by is a suggestion (not strictly enforced) to Yelp's search, which considers multiple input parameters to return the most relevant results. For example, the rating sort is not strictly sorted by the rating value, but by an adjusted rating value that takes into account the number of ratings, similar to a Bayesian average. This is to prevent skewing results to businesses with a single review.
 offset | int | Offset the list of returned business results by this amount.
-
-
-
-
-
-
-## Working with the APIs
-This program allows users to obtain restaurant review and weather information based on customized location and business type.
-
-The Yelp Fusion APIs offer several endpoints including search, business details, etc. Each endpoint returns a specific facet about the businesses in Yelp's database. Its construct is similar to many database APIs in that one first needs to identify a unique ID of the desired entity by certain parameters in order to obtain more attributes of it, hence the separate end points search and business details.
 
 In reviewing the API documentations, we summarized the following limits of the service.
   1. A client is limited to 5,000 APIs per 24 hours resetting every midnight UTC.
@@ -145,18 +68,33 @@ In storing the results of our queries, we made the decision to store our daily r
 The two programs work on digging into the JSON files returned by the Yelp Fusion API and OpenWeatherMap API, choosing required fields and combine data for each city and across cities in CSV format.
 
 The JSON file returned from OpenWeatherMap API is extracted as a dictionary of dictionaries. Each file consists of each day's statistics in each city. On investigation, it turns out that OpenWeatherMap API sometimes concatenates the same data twice and stores it in one file. This causes the system to fail while creating the dataset. This requires manual intervention as it is difficult to correct the syntax of a JSON file using Python. The time complexity of extracting weather data is O(n<sup>4</sup>). The extracted fields are:
-  1. dt
-  2. visibility
-  3. id
-  4. name
-  5. coords - lat and lon
-  6. wind - speed and deg
-  7. sys - sunrise and sunset
-  8. clouds
-  9. weather - main and description
-  10. main - humidity, pressure, temp, temp_max, temp_min
 
-The JSON file returned from Yelp Fusion API is extracted as a list of dictionaries. Extracting restaurant data is a more convoluted process since the nesting go as deep as 4-5 levels. This shows the level of detail returned each day. Unlike weather data, the data returned has always been clean. Due to the level of nesting, the complexity of extracting data is O(n<sup>5</sup>). The simple fields extracted are:
+#### *Weather Information Dataset*
+
+*Name* | *Data Type* | *Description*
+------- | -------- | ---------
+date_id | string | Unique ID to map the restaurant reviews and weather information dataset
+weather_main | string | Group of weather parameters (Example: Clouds, Rain, Snow, Extreme etc.)
+weather_description | string | Weather condition within the group mentioned above (Example: Broken clouds, Few clouds, Light rain etc.)
+main_temp | decimal | The temperature of that day. The default unit considered here is Kelvin
+main_pressure | decimal | Atmospheric pressure of that day in hPa (hectopascals)
+main_humidity | int | Relative air humidity of that day in %
+main_temp_min | decimal | Minimum temperature on that day. The default unit considered here is Kelvin
+main_temp_max | decimal | Maximum temperature on that day. The default unit considered here is Kelvin
+visibility | decimal | Visibility on that day in meters
+wind_speed | decimal | Speed of the wind in mps (meters per second)
+wind_deg | decimal | Direction of the wind on that day in degrees (meteorogical). As an example, 270 degrees means the wind is blowing from the west
+clouds_all | int | The % of cloudiness/cloud cover for that day
+dt | int | Date & time of receiving data in the unix timestamp format, UTC (Example: Unix timestamp 1541696160 is equivalent to 11/08/2018 @ 4:56pm (UTC))
+sys_sunrise | int | Date & time of sunrise in the unix timestamp format, UTC
+sys_sunset | int | Date & time of sunrise in the unix timestamp format, UTC
+id | int | City ID
+name | string | City name
+coord.lon, coord.lat | decimal | Longitude and latitude values for the given city
+
+The JSON file returned from Yelp Fusion API is extracted as a list of dictionaries. Extracting restaurant data is a more convoluted process since the nesting go as deep as 4-5 levels. This shows the level of detail returned each day. Unlike weather data, the data returned has always been clean. Due to the level of nesting, the complexity of extracting data is O(n<sup>5</sup>). 
+
+The simple fields extracted are:
   1. id
   2. name
   3. is_closed
@@ -173,7 +111,45 @@ The compound fields extracted are:
   2. coordinates - latitude and longitude
   3. location - display_address
 
+#### *Restaurant Review Dataset*
+
+*Name* | *Data Type* | *Description*
+------- | -------- | ---------
+date_id | string | Unique ID to map the restaurant reviews and weather information dataset
+id | string | Unique Yelp ID of this business. Example: '4kMBvIEWPxWkWKFN__8SxQ'
+name | string | Name of this business
+is_closed | bool | Whether business has been (permanently) closed
+url | string | URL for business page on Yelp
+review_count | int | Number of reviews for this business
+categories | string | Title of a category for display purpose. Example: Japanese, Italian, Juicebars vegan
+rating | decimal | Rating for this business (value ranges from 1, 1.5, ... 4.5, 5)
+latitude | decimal | City geo location - latitude coordinates of this business
+longitude | decimal | City geo location - longitude coordinates of this business
+transactions | string[] | List of transactions that the business is registered for. Current supported values are pickup, delivery and restaurant_reservation
+price | string | Price level of the business. Value is one of $, $$, $$$ and $$$$.
+display_address | string | Array of strings that if organized vertically give an address that is in the standard address format for the business's country
+display_phone | string | Phone number of the business formatted nicely to be displayed to users. The format is the standard phone number format for the business's country
+distance | decimal | Distance in meters from the search location. This returns meters regardless of the locale
+
 In the program, datacombination.py, data from all the 4 cities were combined. During combination, an extra field was created using Pandas DataFrame to mention clearly the city in which the given restaurant is located.
+
+#### *Eliminated Attributes from each dataset*
+##### Restaurant Reviews
+*Name* | *Data Type* | *Reason not considered*
+------- | -------- | ---------
+business.alias | string | Every Yelp business has both a unique ID as well as a unique alias (eg: "name-of-business-separated-by-hyphen"). These can be used interchangeably. However, the business alias contains unicode characters and hence we thought using the business id is ideal and also we have the business name captured in column 'name'
+business.image_url | string | Since our output presents the data in a csv format, decision to use just the URL of the business page on Yelp and not the the URL of the image was taken
+business.location | object | The location object includes address1, address2, address3, city, state, zip and country. The attribute display_address, instead, merges all these elements as an array of strings which gives the address of the business in the standard address
+business.phone | string | This attribute displays the phone number of the business in a simple format like - +17864520068 whereas the attribute we have used is the display_phone which displays the same number in a better standard format - (786) 452-0068
+
+##### Weather Information
+*Name* | *Data Type* | *Reason not considered*
+------- | -------- | ---------
+weather.id | int | Displays the weather condition ID. Since the weather parameters and condition attributes are considered, this column was eliminated
+weather.icon | string | Since our output presents the data in a csv format, use of the description of weather parameter and not related icon seemed fit
+base.stations | string | This is an internal parameter for OpenWeatherMap to source weather data from meteorological broadcast services, raw data from airport weather stations, radar stations and other official weather stations
+sys.type, sys.id, sys.message | number | These are internal parameters of the Sys structure that contain general information about the request and the surrounding area for where the request was made
+cod | int | An internal parameter indicating the structure defined for JSON to be unmarshaled into
 
 The processing will work even if the dataset is expanded to contain all cities in the United States, if not the world, as all that needs to be clear is the naming scheme of the files, which is taken care of by this system. The consistency in data returned by the two APIs adds to our confidence in stating so.
 
@@ -188,6 +164,3 @@ The processing will work even if the dataset is expanded to contain all cities i
   - Housing: computer and internet use, kitchen facilities, occupants per room, owner/renter, vehicle available, etc.
   - Economic: employment status, health insurance coverage, industry and occupation, etc.
   - Demographic: age;sex, total population
-
-
-- Devanshi, you could talk about how the distance field doesn't seem to be reflective of actual querying location (PHL) and other cities.
