@@ -88,7 +88,6 @@ business.phone | string | This attribute displays the phone number of the busine
 ##### Weather Information
 *Name* | *Data Type* | *Reason not considered*
 ------- | -------- | ---------
-coord.lon, coord.lat | decimal | Taken into consideration in Restaurant Reviews dataset
 weather.id | int | Displays the weather condition ID. Since the weather parameters and condition attributes are considered, this column was eliminated
 weather.icon | string | Since our output presents the data in a csv format, use of the description of weather parameter and not related icon seemed fit
 base.stations | string | This is an internal parameter for OpenWeatherMap to source weather data from meteorological broadcast services, raw data from airport weather stations, radar stations and other official weather stations
