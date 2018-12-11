@@ -144,7 +144,7 @@ In storing the results of our queries, we made the decision to store our daily r
 
 The two programs work on digging into the JSON files returned by the Yelp Fusion API and OpenWeatherMap API, choosing required fields and combine data for each city and across cities in CSV format.
 
-The JSON file returned from OpenWeatherMap API is extracted as a dictionary of dictionaries. Each file consists of each day's statistics in each city. On investigation, it turns out that OpenWeatherMap API sometimes concatenates the same data twice and stores it in one file. This causes the system to fail while creating the dataset. This requires manual intervention as it is difficult to correct the syntax of a JSON file using Python. The time complexity of extracting weather data is O(n<sup>4</sup?). The extracted fields are:
+The JSON file returned from OpenWeatherMap API is extracted as a dictionary of dictionaries. Each file consists of each day's statistics in each city. On investigation, it turns out that OpenWeatherMap API sometimes concatenates the same data twice and stores it in one file. This causes the system to fail while creating the dataset. This requires manual intervention as it is difficult to correct the syntax of a JSON file using Python. The time complexity of extracting weather data is O(n<sup>4</sup>). The extracted fields are:
   1. dt
   2. visibility
   3. id
