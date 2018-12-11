@@ -12,11 +12,9 @@ The dataset is ideal for answering questions such as:
 * Do restaurants benefit from certain characteristics of locations in terms of the reviews they receive? E.g. Chinese restaurant in Chinatown vs. a tourist site.
 * Comparison of competing restaurants in the same area? Eg:- Which cafe is better in the University City? Starbucks, Saxby’s or Wawa
 * What are the flavor preferences of residents of different cities?
-
 The dataset is also good for developing products such as:
 * Geo-mapping/heatmaps of ‘cuisine districts’
-![many Philadelphias](https://raw.githubusercontent.com/AkshayJk1995/Weather-To-Eat-Or-Not-Dataset/master/1.png)
-![many Philadelphias](https://raw.githubusercontent.com/AkshayJk1995/Weather-To-Eat-Or-Not-Dataset/master/2.png)
+
 * A consulting algorithm that recommends the ideal location/price range/cuisine type given certain inputs from a business owner.
 
 Finally, we believe the dataset may be of interests to several stakeholders:
