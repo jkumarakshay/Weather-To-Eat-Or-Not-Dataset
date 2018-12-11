@@ -4,7 +4,7 @@
 ## Introduction - Abeer
 
 Project Scope: 
-Our project consists of creating a national restaurant dataset using the Yelp Fusion API and other data sources. There are four cities of interest for comparison: Philadelphia, San Francisco, Chicago and Miami. aWe extracted attributes associated with the restaurants such as coordinates, phone number, operating hour, address, pricing level, rating and count of reviews. Also, we have decided to extract data from openweathermap.org such as humidity, Minimum temperature, Maximum temperature and wind speed for for the four cities.
+Our project consists of creating a national restaurant dataset using the Yelp Fusion API and other data sources. There are four cities of interest for comparison: Philadelphia, San Francisco, Chicago and Miami. We extracted attributes associated with the restaurants such as coordinates, phone number, operating hour, address, pricing level, rating and count of reviews. Also, we have decided to extract data from openweathermap.org such as humidity, Minimum temperature, Maximum temperature and wind speed for for the four cities.
 
 Motivation and Purpose:
 The dataset is ideal for answering questions such as:
