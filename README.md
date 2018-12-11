@@ -1,5 +1,8 @@
 # Weather-To-Eat-Or-Not-Dataset
 ### -- Uncover the nation’s appetite – a decision support dataset for would-be restauranteurs
+Authors: Devanshi Dholakia, Abeer Almahyawi, Akshay Jayakumar and Ou Stella Liang
+
+Last updated: 12/11/2018
 
 ## Introduction
 
