@@ -22,7 +22,7 @@ Finally, we believe the dataset may be of interests to several stakeholders:
 - Public health agencies who are interested in the population’s access and attitudes in dining out.
 - Public agencies interested in studying the local economy.
 - Food reviewers who are interested in assessing population’ interest.
-- Students/travellers who are looking for a type of restaurant in a new area (via the products of this dataset, e.g. heatmaps)
+- Students/travelers who are looking for a type of restaurant in a new area (via the products of this dataset, e.g. heatmaps)
 
 
 ## Data Dictionary - Devanshi
