@@ -15,6 +15,8 @@ The dataset is ideal for answering questions such as:
 The dataset is also good for developing products such as:
 * Geo-mapping/heatmaps of ‘cuisine districts’
 
+![ScreenShot](https://raw.githubusercontent.com/AkshayJk1995/Weather-To-Eat-Or-Not-Dataset/master/Pil_map.png)
+
 * A consulting algorithm that recommends the ideal location/price range/cuisine type given certain inputs from a business owner.
 
 Finally, we believe the dataset may be of interests to several stakeholders:
