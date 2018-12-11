@@ -1,0 +1,42 @@
+{
+  "coord": {
+    "lon": -80.19,
+    "lat": 25.77
+  },
+  "weather": [
+    {
+      "id": 803,
+      "main": "Clouds",
+      "description": "broken clouds",
+      "icon": "04d"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 302.63,
+    "pressure": 1016,
+    "humidity": 65,
+    "temp_min": 302.05,
+    "temp_max": 304.25
+  },
+  "visibility": 16093,
+  "wind": {
+    "speed": 4.1,
+    "deg": 70
+  },
+  "clouds": {
+    "all": 75
+  },
+  "dt": 1541696160,
+  "sys": {
+    "type": 1,
+    "id": 689,
+    "message": 0.004,
+    "country": "US",
+    "sunrise": 1541676852,
+    "sunset": 1541716475
+  },
+  "id": 4164138,
+  "name": "Miami",
+  "cod": 200
+}

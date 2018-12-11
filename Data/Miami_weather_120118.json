@@ -1,0 +1,42 @@
+{
+  "coord": {
+    "lon": -80.19,
+    "lat": 25.77
+  },
+  "weather": [
+    {
+      "id": 500,
+      "main": "Rain",
+      "description": "light rain",
+      "icon": "10n"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 296.83,
+    "pressure": 1019,
+    "humidity": 73,
+    "temp_min": 295.95,
+    "temp_max": 297.55
+  },
+  "visibility": 16093,
+  "wind": {
+    "speed": 3.6,
+    "deg": 110
+  },
+  "clouds": {
+    "all": 90
+  },
+  "dt": 1543621980,
+  "sys": {
+    "type": 1,
+    "id": 4896,
+    "message": 0.0038,
+    "country": "US",
+    "sunrise": 1543665019,
+    "sunset": 1543703354
+  },
+  "id": 4164138,
+  "name": "Miami",
+  "cod": 200
+}

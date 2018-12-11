@@ -1,0 +1,42 @@
+{
+  "coord": {
+    "lon": -87.62,
+    "lat": 41.88
+  },
+  "weather": [
+    {
+      "id": 600,
+      "main": "Snow",
+      "description": "light snow",
+      "icon": "13d"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 268.58,
+    "pressure": 1014,
+    "humidity": 61,
+    "temp_min": 267.05,
+    "temp_max": 270.15
+  },
+  "visibility": 16093,
+  "wind": {
+    "speed": 5.7,
+    "deg": 280
+  },
+  "clouds": {
+    "all": 40
+  },
+  "dt": 1543348500,
+  "sys": {
+    "type": 1,
+    "id": 4861,
+    "message": 0.0039,
+    "country": "US",
+    "sunrise": 1543323312,
+    "sunset": 1543357283
+  },
+  "id": 4887398,
+  "name": "Chicago",
+  "cod": 200
+}
